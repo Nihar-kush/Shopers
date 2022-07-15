@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Components/Card";
 import axios from "axios";
 import Loading from "../Components/Loading";
@@ -6,9 +6,10 @@ import Categories from "../Components/Categories";
 import Navbar from "../Components/Navbar";
 
 export default function Products() {
-  const [products, setProducts] = React.useState([]);
-  const [response, setResponse] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
+  const [products, setProducts] = useState([]);
+  const [response, setResponse] = useState([]);
+  const [response1, setResponse1] = useState([]);
+  const [loading, setLoading] = useState(false);
   const baseURL = "https://fakestoreapi.com/products";
 
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function Products() {
       const response = await axios.get(baseURL);
       setResponse(response.data);
       setProducts(response.data);
+      setResponse1(response.data);
       setLoading(false);
     };
 
@@ -34,10 +36,10 @@ export default function Products() {
     }
   };
   return (
-    <div className="w-100">
-      <Navbar />
+    <div className="">
+      <Navbar response1={response1} setProducts={setProducts} />
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center d-flex ">
           {loading ? (
             <Loading />
           ) : (
@@ -48,6 +50,8 @@ export default function Products() {
             />
           )}
         </div>
+      </div>
+      <div className="container">
         <div className="row d-flex justify-content-center">
           {products.map((product) => (
             <Card product={product} key={product.id} id={product.id} />

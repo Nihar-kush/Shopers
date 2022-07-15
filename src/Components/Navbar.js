@@ -1,37 +1,58 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBars,
   faCartShopping,
   faHeart,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Navbar() {
+export default function Navbar({ response1, setProducts }) {
+  const [query, setQuery] = useState("");
+
+  function searchHandler(e) {
+    e.preventDefault();
+    if (query !== "") {
+      const filteredProducts = response1.filter((item) => {
+        return item.title.toLowerCase().startsWith(query.toLowerCase());
+      });
+      setProducts(filteredProducts);
+    } else {
+      setProducts(response1);
+    }
+
+    setQuery("");
+  }
   return (
-    <div className="container sticky-top vw-100">
-      <nav className="navbar navbar-expand-lg bg-dark rounded-bottom ">
-        <div className="container-fluid">
-          <button
+    <div className="container  sticky-top ">
+      <nav className="navbar navbar-expand-lg bg-dark rounded-bottom">
+        <div className="container">
+          <a className="navbar-brand text-light fst-italic fw-bold" href="/">
+            Fakeshop
+          </a>
+          <span
             className="navbar-toggler"
-            type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo03"
             aria-controls="navbarTogglerDemo03"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <a className="navbar-brand text-light fst-italic fw-bold" href="#">
-            Fakeshop
-          </a>
+            <FontAwesomeIcon
+              icon={faBars}
+              className="navbar-toggler-icon text-light "
+              role="button"
+            />
+          </span>
           <div className="collapse navbar-collapse " id="navbarTogglerDemo03">
-            <form className="d-flex mx-auto">
+            <form className="d-flex mx-auto" onSubmit={(e) => searchHandler(e)}>
               <input
                 className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
               />
               <button className="btn btn-outline-light">Search</button>
             </form>

@@ -6,9 +6,14 @@
 .object-contain {
   object-fit: contain;
 }
+
+
+/* Card CSS */
+.cardImg {
+  transition: transform 01s;
+}
 .cardImg:hover {
-  transform: scale(1.5);
-  transition: 3000  ease-in-out;
+  transform: scale(1.3);
 }
 
 /* Loader CSS */

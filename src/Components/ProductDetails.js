@@ -7,13 +7,13 @@ import { faCircleArrowLeft, faStar } from "@fortawesome/free-solid-svg-icons";
 export default function ProductDetails({ product }) {
   const rating = product.rating;
   return (
-    <div className="bg-light vh-100 p-5">
-      <Link to="/" className="text-dark fs-3 m-5">
+    <div className="bg-light container-fluid px-md-5 px-3 vh-100">
+      <Link to="/" className="text-dark fs-1 m-md-5 ">
         <FontAwesomeIcon icon={faCircleArrowLeft} />
       </Link>
 
-      <div className="product-details bg-light d-flex justify-content-center align-items-center border  mx-5 mt-5 shadow-lg p-5">
-        <div className="container col-md-3 ">
+      <div className="product-details bg-light d-flex row justify-content-center align-items-center  mx-md-5 mt-2 shadow-lg p-5">
+        <div className="container col-md-3 col-12 ">
           <ReactImageMagnify
             {...{
               smallImage: {
@@ -28,20 +28,22 @@ export default function ProductDetails({ product }) {
               },
               enlargedImageContainerDimensions: {
                 width: "200%",
-                height: "100%",
+                height: "130%",
               },
             }}
           />
         </div>
-        <div className="container col-md-8  border-start border-dark">
-          <p className="fs-3 text-uppercase ">{product.category}</p>
-          <h5 className="fs-3 fw-bold">{product.title}</h5>
-          <p className="fs-5">{product.description}</p>
+        <div className="col-md-6 col-12">
+          <p className="fs-6 text-black-50 text-uppercase ">
+            {product.category}
+          </p>
+          <h5 className="fs-2 fw-semibold">{product.title}</h5>
           <p className="fs-5">
             Rating - {rating && rating.rate}
             <FontAwesomeIcon icon={faStar} />
           </p>
           <p className="fs-3 fw-bold">₹{product.price}</p>
+          <p className=" lead">{product.description}</p>
           <div className="d-flex gap-2">
             <div className="btn btn-dark">BUY NOW</div>
             <div className="btn btn-outline-dark">ADD TO CART</div>

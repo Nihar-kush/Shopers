@@ -1,9 +1,8 @@
 import React from "react";
-import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Categories({ filterProducts }) {
   return (
-    <div className="d-flex justify-content-center my-5 gap-2">
+    <div className="d-flex justify-content-center my-5 gap-3 flex-wrap ">
       <a className="btn btn-outline-dark" onClick={() => filterProducts("All")}>
         All
       </a>

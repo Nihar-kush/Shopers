@@ -1,13 +1,13 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../Components/Loading";
 import ProductDetails from "../Components/ProductDetails";
 
 export default function Product() {
   const { id } = useParams();
-  const [product, setProduct] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [product, setProduct] = useState("");
+  const [loading, setLoading] = useState(false);
   const productURL = `https://fakestoreapi.com/products/${id}`;
 
   useEffect(() => {

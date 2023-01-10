@@ -14,7 +14,7 @@ export default function Card({ product }) {
         <h5 className="card-title text-truncate fw-bold fs-3">
           {product.title}
         </h5>
-        <p className="card-text fw-semibold fs-5">${product.price}</p>
+        <p className="card-text fw-semibold fs-5">₹{product.price}</p>
         <Link to={`/${product.id}`} className="btn btn-dark">
           Buy Now
         </Link>

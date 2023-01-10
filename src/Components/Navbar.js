@@ -28,7 +28,7 @@ export default function Navbar({ response1, setProducts }) {
       <nav className="navbar navbar-expand-lg bg-dark rounded-bottom">
         <div className="container">
           <a className="navbar-brand text-light fst-italic fw-bold" href="/">
-            Fakeshop
+            Shopper
           </a>
           <span
             className="navbar-toggler"
